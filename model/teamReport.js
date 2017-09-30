@@ -5,7 +5,7 @@ var timestamps = require('mongoose-timestamp');
 var TeamReportSchema = mongoose.Schema({
 	TeamId: {
 		type:String 
-	}
+	},
 	Teamscore: {
 		type:String,
 		index: true 
@@ -17,10 +17,11 @@ var TeamReportSchema = mongoose.Schema({
 		type: String 
 	}
 });
-UserSchema.plugin(timestamps);
-TeamReportSchema.model('Team', TeamReportSchema);
+TeamReportSchema.plugin(timestamps);
+//TeamReportSchema.model('TeamReport', TeamReportSchema);
 
-var Team = mongoose.model('Team',TeamReportSchema);
+var TeamReport  = module.exports = mongoose.model('TeamReport',TeamReportSchema);
+
 
 module.exports.createTeamReport= function(newTeamReport,callback){
 	newTeamReport.save(callback);

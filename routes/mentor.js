@@ -62,7 +62,7 @@ router.get('/', function(req,res,callback) {
     })
 });
 
-router.get('/student1', function(req.res.callback) {
+router.get('/student1', function(req,res,callback) {
     var students = JSON.parse(localStorage.getItem("students"));
     res.render('student', {
         student:students[0]
@@ -70,47 +70,47 @@ router.get('/student1', function(req.res.callback) {
 
 });
 
-router.get('/student2', function(req.res.callback) {
+router.get('/student2', function(req,res,callback) {
     var students = JSON.parse(localStorage.getItem("students"));
     res.render('student', {
         student:students[1]
     })
 
 });
-router.get('/student3', function(req.res.callback) {
+router.get('/student3', function(req,res,callback) {
     var students = JSON.parse(localStorage.getItem("students"));
     res.render('student', {
         student:students[2]
     })
 
 });
-router.get('/student4', function(req.res.callback) {
+router.get('/student4', function(req,res,callback) {
     var students = JSON.parse(localStorage.getItem("students"));
     res.render('student', {
         student:students[3]
     })
 });
 
-router.get('/teamReport',function(req.res.callback) {
-    var team = JSON.parse(localStorage.getItem(""))
-    res.render('teamreport' {
+router.get('/teamReport',function(req,res,callback) {
+    var team = JSON.parse(localStorage.getItem(""));
+    res.render('teamreport', {
         team: team
     })
 });
 
-router.post('/teamReport', function(req.res.callback) {
+router.post('/teamReport', function(req,res,callback) {
     var Teamscore = req.body.score;
     var review = req.body.review;
     var photo = req.body.photo;
     var Team = JSON.parse(localStorage.getItem("Team"));
     var TeamID = Team.id 
 
-    var newTeamReport = new TeamReport{(
+    var newTeamReport = new TeamReport({
         TeamId: TeamID,
         Teamscore: Teamscore,
         review: review,
         photo: photo
-        )};
+       });
     res.redirect('/');
 
 });
