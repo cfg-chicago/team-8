@@ -12,7 +12,6 @@ router.get('/', function(req, res, next) {
 	else {
 		res.render('index', {
 			username: req.user.username,
-			point: req.user.point
 		});
 	}
 });
@@ -27,7 +26,6 @@ router.get('/error', function(req, res, next) {
 
 		res.render('error', {
 			username: req.user.username,
-			point: req.user.point
 		});
 	}
 });

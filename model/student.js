@@ -1,4 +1,4 @@
-var mongoose = requir('mongoose');
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var StudentSchema = mongoose.Schema({
@@ -26,13 +26,13 @@ var StudentSchema = mongoose.Schema({
 	}	
 });
 
-var Student = module.exports = mongoose.module('Student', StudentSchema);
+var Student = module.exports = mongoose.model('Student', StudentSchema);
 
 module.exports.createStudent = function(newStrudent, callback){
 	newStudent.save(callback);
 };
 
-module.exports.getStduentById = funciton(student_Id, callback){
+module.exports.getStduentById = function(student_Id, callback){
 	var query = {_id: student_id};
 	Student.findOne(query,callback);
 };
