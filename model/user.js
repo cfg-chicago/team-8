@@ -16,20 +16,11 @@ var UserSchema = mongoose.Schema({
   email: {
     type: String
   },
-  college: {
-    type: String
-  },
-  major: {
-    type: String
-  },
   avatar: {
     type: String
   },
-  point: {
-    type: Number
-  },
-  numberOfUploading: {
-    type: Number
+  type: {
+    type: String
   },
   resetPasswordToken: String,
   resetPasswordExpires: Date
@@ -67,4 +58,6 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
       callback(null, isMatch);
   });
 };
+
+
 
