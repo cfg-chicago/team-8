@@ -2,16 +2,16 @@ var express =require('express');
 var async = require('async');
 var router = express.Router();
 var Mentor = require('../model/mentor');
-var Student = require('../mdoel/student');
+var Student = require('../model/student');
 
 var User = require('../model/user');
 var bodyParser = require('body-parser');
 var app = express();
 
-var server = require(http).createServer(app);
+var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 var Handlebars = require('handlebars');
-var CronJob = require('corn').CronJob;
+var CronJob = require('cron').CronJob;
 app.use(bodyParser.json());
 
 function loggedIn(req, res, next) {
@@ -25,7 +25,7 @@ function loggedIn(req, res, next) {
 }
 
 router.get('/', function(req,res,callback) {
-    //console.log('mentor page')
+    console.log('mentor page')
     var students = new Array();
     var team = new Object();
     var temp1 = new Array();
@@ -42,7 +42,7 @@ router.get('/', function(req,res,callback) {
 		         callback(null, students);
 		    });
 		 },
-		 fucntion(callback){
+		 function(callback){
 		 	Team.getTeamByMentorId(req.user.id, function(err,team){
 		 	team = new Object(); 
 		 	callback(null,team);
