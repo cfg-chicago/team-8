@@ -38,13 +38,14 @@ router.get('/', function(req,res,callback) {
                 var stringify = JSON.stringify(studentI);
 		    	temp1 = JSON.parse(stringify);
                 console.log(temp1);
-                localStorage.setItem('students', temp1);
+                
 		    		for(var key in temp1){
 		    			if(typeof temp1[key] != "undefined"){
 		    			   students.push(temp1[key]);
                         }
 		    		}
 		    		console.log("students" + students);
+                   
 		         callback(null, students);
 		    });
 		 },
@@ -58,7 +59,10 @@ router.get('/', function(req,res,callback) {
 		 }
       
     ], function(err){
-    
+     localStorage.setItem('student1', students[0]);
+     localStorage.setItem('student2', students[1]);
+     localStorage.setItem('student3', students[2]);
+     localStorage.setItem('student4', students[3]);
     	res.render('mentor',{
     		student1:students[0].name,
             student2:students[1].name,
@@ -74,31 +78,33 @@ router.get('/', function(req,res,callback) {
 });
 
 router.get('/student1', function(req,res,callback) {
-    var students = JSON.parse(localStorage.getItem("students"));
-    res.render('student', {
-        student:students[0]
+    
+    var student = JSON.parse(JSON.stringify(localStorage.getItem('student1')));
+    console.log("hi"+student.name);
+    res.render('students', {
+       student:student
     })
 
 });
 
 router.get('/student2', function(req,res,callback) {
-    var students = JSON.parse(localStorage.getItem("students"));
+  var student = JSON.parse(JSON.stringify(localStorage.getItem('student2')));  
     res.render('student', {
-        student:students[1]
+        student:studentz
     })
 
 });
 router.get('/student3', function(req,res,callback) {
-    var students = JSON.parse(localStorage.getItem("students"));
+      var student = JSON.parse(JSON.stringify(localStorage.getItem('student3')));
     res.render('student', {
-        student:students[2]
+        student:student
     })
 
 });
 router.get('/student4', function(req,res,callback) {
-    var students = JSON.parse(localStorage.getItem("students"));
+     var student = JSON.parse(JSON.stringify(localStorage.getItem('student4')));
     res.render('student', {
-        student:students[3]
+        student:student
     })
 });
 
