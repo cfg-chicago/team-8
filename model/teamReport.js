@@ -3,10 +3,10 @@ var Schema = mongoose.Schema;
 var timestamps = require('mongoose-timestamp');
 
 var TeamReportSchema = mongoose.Schema({
-	TeamId: {
+	teamId: {
 		type:String 
 	},
-	Teamscore: {
+	teamscore: {
 		type:String,
 		index: true 
 	},

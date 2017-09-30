@@ -116,19 +116,20 @@ router.get('/teamReport',function(req,res,callback) {
 });
 
 router.post('/teamReport', function(req,res,callback) {
-    var Teamscore = req.body.TeamScore;
-    var review = req.body.review;
+    console.log(req.body);
+    var teamscore = req.body.TeamScore;
+    var review = req.body.Review;
     var photo = 0;
-    var Team = JSON.parse(JSON.stringify(localStorage.getItem("Team")));
-    var TeamID = Team.id 
+    var team = JSON.parse(JSON.stringify(localStorage.getItem("Team")));
+    var teamID = Team._id 
 
     var newTeamReport = new TeamReport({
-        TeamId: TeamID,
-        Teamscore: Teamscore,
-        review: Review,
+        teamId: teamID,
+        t_eamscore: teamscore,
+        review: review,
         photo: 0
        });
-    res.redirect('/');
+    res.redirect('/mentor');
 
 });
 
