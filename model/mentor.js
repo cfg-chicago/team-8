@@ -1,5 +1,5 @@
-var mongoose = requir('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+
 
 var MentorSchema = mongoose.Schema({
 	name: {
@@ -21,13 +21,13 @@ var MentorSchema = mongoose.Schema({
 	}
 });
 
-var Mentor = module.exports = mongoose.module('Mentor', MentorSchema);
+var Mentor = module.exports = mongoose.model('Mentor', MentorSchema);
 
 module.exports.createMentor = function(newMentor, callback){
 	newMentor.save(callback);
 };
 
-module.exports.getMentorByUserId = funciton(userId callback){
+module.exports.getMentorByUserId = function(userId, callback){
 	var query = {userId: userId};
 	Mentor.findOne(query,callback);
 };
