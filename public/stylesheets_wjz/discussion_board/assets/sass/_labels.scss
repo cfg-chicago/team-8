@@ -1,0 +1,13 @@
+.m-label {
+	display: inline;
+	padding: 5px;
+	border-radius: 8px;
+	text-align: center;
+	background: $tundora;
+	color: $white;
+}
+
+.m-label-unread {
+	background: #f0ad4e;
+	color: $tundora;	
+}

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/stylesheets_wjz/bootstrap.min.css"> <!-- Bootstrap style -->
+  <link rel="stylesheet" href="/stylesheets/profile.css"> <!-- Gem style -->
+
+  <script src="javascripts/modernizr.js"></script> <!-- Modernizr -->
+  
+  <title>Symposium</title>
+</head>
+
+<div class="row">
+  <div class="col-lg-12">
+    {{#if success_msg}}
+    <div class="alert alert-success">{{success_msg}}</div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="alert alert-danger">{{error_msg}}</div>
+    {{/if}}
+
+    {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+    
+    {{{body}}}
+  </div>  
+</div>
+
+
+<!--NAVBAR SECTION START -->
+
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+
+  <div class="dropdown">
+    <button class="navbar-toggler navbar-toggler-right dropbtn" type="button" data-toggle="collapse" data-target="#navbar-collapse-1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-collapse-1" class="dropdown-content">
+      <ul class="nav navbar-nav navbar-right" >
+                {{#if user}}
+                <li class="sampleText">Hi! <strong>{{username}}</strong></li>
+                <a href="/users/profile">Profile</a>
+                <a href="/users/logout">Log Out</a>
+                {{else}}
+                <a href="/users/signup">Sign Up</a>
+                <a href="/users/login">Log In</a>
+                {{/if}}
+            </ul>
+          </div>
+        </div>
+
+
+        <a class="navbar-brand" href="/">Symposium</a>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <form class="form-inline mt-2 mt-md-0" action="/" method="post">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="coursename"/>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+
+          <ul class="navbar-nav ml-auto">
+                  {{#if user}}
+                  <a class="nav-link prompt"> Welcome! {{username}} has {{point}} points!</a>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/users/profile">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/users/logout">Log Out</a>
+                  </li>
+                  {{else}}
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/users/signup">Sign Up</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/users/login">Log In</a>
+                  </li>
+                  {{/if}}
+                </ul>
+              </div>
+            </nav>
+
+            <div class="container">
+              <h2>My Profile</h1>
+                <hr>
+                <div class="row">
+                  <!-- left column -->
+                  <div class="col-md-3">
+                    <div class="text-center">
+                      
+                      <img src="{{avatar}}" class="avatar img-circle" alt="avatar">
+                    
+                      <ul>
+                        <hr>
+                        <li><a class="classTaken"> Current Avatar </a></li>
+                        <hr>
+                        </div>
+                      </div>
+                      
+                      <!-- edit form column -->
+                      <div class="col-md-9 personal-info">
+                        <h3>Personal info</h3>
+                        <form class="form-horizontal" role="form" method="post" action="/users/profile">
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Username:</label>
+                            <div class="col-lg-8">
+                              <input class="form-control" type="text" name="username" value="{{username}}" disabled>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Email Address:</label>
+                            <div class="col-lg-8">
+                              <input class="form-control" type="text" name="email" value="{{email}}">
+                            </div>
+                          </div>
+                        <div class="form-group">
+                          <label class="col-lg-3 control-label">New Password:</label>
+                          <div class="col-lg-8">
+                            <input class="form-control" type="password" value="" name="password">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-3 control-label">Confirm New password:</label>
+                          <div class="col-lg-8">
+                            <input class="form-control" type="password" value="" name="passwordConfirm">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-3 control-label">College / University:</label>
+                          <div class="col-lg-8">
+                            <input class="form-control" type="text" name="college" value="{{college}}">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-3 control-label">Major: </label>
+                          <div class="col-lg-8">
+                            <input class="form-control" type="text" name="major" value="{{major}}">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-3 control-label">Avatar: </label>
+                          <div class="col-lg-8">
+                            <input class="form-control" type="file" name="avatar" id="avatar">
+                          </div>
+                        </div>
+        
+        
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <div class="col-md-10">
+                <p class="fieldset">
+                  <input class="full-width has-padding" type="submit" value="Modify Changes">
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="footer">
+    <a class="about" href="../about"><b>About us</b></a>
+    <a class="contact" href="/contact"><b>Contact us</b></a>
+    <a class="company">&copy; 2017 Symposium, Inc.</a>
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="javascripts/logsign_nav.js"></script> <!-- Gem jQuery -->
+</body>
+</html>

@@ -1,0 +1,178 @@
+// Boards Header
+
+.m-board-header {
+	background-color: $tundora;
+	border: 1px solid $tundora;
+	box-sizing: border-box;
+	color: $white;
+}
+
+.m-board-header-cell {
+	// display: table-cell;
+	padding: 14px 20px 14px 20px;
+	display: table-cell;
+}
+
+.m-board-header-key {
+	background: transparent;
+	padding: 0 5px;
+}
+
+.m-board-header-title {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 18px;
+	width: 100%;
+	@media (min-width: 768px) {
+		width: 55%;
+	}
+}
+
+.m-board-header-expand {
+	display: none;
+	@media (min-width: 768px) {
+		display: table-cell;
+		width: 20%;
+	}
+}
+
+.m-board-header-readstatus {
+	display: none;
+	@media (min-width: 768px) {
+		display: table-cell;
+		width: 20%;
+	}
+}
+
+.m-board-header-check {
+	display: none;
+	@media (min-width: 768px) {
+		display: table-cell;
+		width: 5%;
+	}
+}
+
+// Boards
+
+.m-board {
+	background-color: $concrete;
+	border: 1px solid $mercury;
+	box-sizing: border-box;
+	&:hover {
+		background-color: lighten($dandelion, 20%);
+	}
+}
+
+.m-board-cell {
+	// display: table-cell;
+	padding: 26px 20px 26px 20px;
+}
+
+.m-board-key {
+	background: $meteorite;
+	padding: 0 5px;
+}
+
+.m-board-title {
+	font-weight: bold;
+	width: 100%;
+	@media (min-width: 768px) {
+		display: table-cell;
+		width: 55.42%;
+	}
+}
+
+.m-board-expand {
+	display: none;
+	@media (min-width: 768px) {
+		display: table-cell;
+		width: 20%;
+	}
+}
+
+.m-board-readstatus {
+	display: none;
+	@media (min-width: 768px) {
+		display: table-cell;
+		width: 20%;
+	}
+
+}
+
+.m-board-check {
+	display: none;
+	@media (min-width: 768px) {
+		display: table-cell;
+		width: 5%;
+	}
+
+}
+
+// Topics
+
+.m-topic {
+	background-color: transparent;
+	border-bottom: 1px solid $mercury;
+	box-sizing: border-box;
+	margin-left: 20px;
+	&:hover {
+		background-color: lighten($dandelion, 20%);
+	}
+}
+
+.m-topic-cell {
+	// display: table-cell;
+	padding: 20px;
+}
+
+.m-topic-key {
+	background: transparent;
+	padding: 0 5px;
+}
+
+.m-topic-title {
+	font-weight: bold;
+	width: 100%;
+	@media (min-width: 768px) {
+		display: table-cell;
+		width: 55%;
+	}
+}
+
+.m-topic-expand {
+	display: none;
+	@media (min-width: 768px) {
+		display: table-cell;
+		width: 20%;
+	}
+}
+
+.m-topic-readstatus {
+	display: none;
+	@media (min-width: 768px) {
+		display: table-cell;
+		width: 21%;
+	}
+}
+
+.m-topic-check {
+	display: none;
+	@media (min-width: 768px) {
+		display: table-cell;
+		width: 5%;
+	}
+}
+
+.last-post-profile {
+	float: left;
+	margin-right: 5px;
+	width: 35px;
+	height: 35px;
+}
+
+.last-post-date {
+	span {
+		display: block;
+		font-size: 12px;
+	}
+}

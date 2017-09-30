@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study Notes</title>
+
+  <link href="../stylesheets_wjz/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../stylesheets_wjz/assets/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../stylesheets_wjz/assets/css/styles.css" rel="stylesheet">
+  <link href="../stylesheets_wjz/assets/css/note.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+  <!--NAVBAR SECTION START -->
+
+  <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+
+    <div class="dropdown">
+      <button class="navbar-toggler navbar-toggler-right dropbtn" type="button" data-toggle="collapse" data-target="#navbar-collapse-1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div id="navbar-collapse-1" class="dropdown-content">
+        <ul class="nav navbar-nav navbar-right" >
+          {{#if user}}
+          <li class="sampleText">Hi! <strong>{{username}}</strong></li>
+          <a href="/users/profile">Profile</a>
+          <a href="/users/logout">Log Out</a>
+          {{else}}
+          <a href="/users/signup">Sign Up</a>
+          <a href="/users/login">Log In</a>
+          {{/if}}
+
+        </ul>
+      </div>
+    </div>
+
+    <a class="navbar-brand" href="/">Symposium</a>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      <form class="form-inline mt-2 mt-md-0" action="/" method="post">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" name="coursename"/>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav ml-auto">
+
+        {{#if user}}
+        <a class="nav-link prompt"> Welcome! {{username}} has {{point}} points!</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="/users/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/logout">Log Out</a>
+        </li>
+        {{else}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/users/signup">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/login">Log In</a>
+        </li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <br>
+        <h2 class="page-title">Study Notes</h2>
+
+        <div class="m-box page-actions">
+          <div class="col-md-7">
+            <a href="/" class="btn btn-default btn-lg" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
+            {{#if user}}
+            <button onclick="myFunction()" class="btn btn-default btn-lg" id="myBtn" type="submit"> <img src="../stylesheets_wjz/assets/images/icon-my-repository.svg" class="icons"> Upload Note</button>
+            {{else}}
+            <button onclick="prompt_createPost_error()" class="btn btn-default btn-lg"> <img src="../stylesheets_wjz/assets/images/icon-my-repository.svg" class="icons"> Upload Note</button>
+            {{/if}}
+            <a href="discussion" class="btn btn-default btn-lg" type="submit"><img src="../stylesheets_wjz/assets/images/icon-discussion-board.svg" class="icons"> Course Boards</a>
+
+          </div><!-- end col-md-9 -->
+          <div class="col-md-5">
+            <a class="btn btn-lg btn-primary pull-right" href="/course" role="button">Course page &raquo;</a>
+          </div><!-- end col-md-5 -->
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="m-board-header">
+          <div class="m-board-header-cell m-board-header-title">
+            Study Notes
+          </div>
+        </div>
+
+        <div class="m-topics-container">
+          <div class="m-topic">
+            <script>
+            function redirect() {
+              setTimeout(function(){
+                window.location.href="/course/downloading";
+              }, 1000);
+            }
+            </script>
+
+            {{#if canDownload}}
+
+              {{#each notes}}
+              <div class="m-topic-cell m-topic-key"></div>
+              <div class="m-topic-cell m-topic-title">
+                {{this.filename}}
+              </div>
+
+              <a id="downloadlink" href="{{this.link}}" onclick="redirect()" class="m-topic-cell m-topic-readstatus" >
+                Download
+              </a>
+
+              <div class="m-topic-cell m-topic-readstatus">
+                <img class="last-post-profile" src="{{this.avatar}}">
+                <div class="last-post-date">
+                  {{this.user_id}}
+                  <span>{{this.time}}</span>
+                </div>
+              </div>
+              <div class="m-topic-cell m-topic-check">
+              </div>
+              {{/each}}
+
+            {{else}}
+
+              {{#each notes}}
+                <div class="m-topic-cell m-topic-key"></div>
+                <div class="m-topic-cell m-topic-title">
+                  {{this.filename}}
+                </div>
+
+                <a class="m-topic-cell m-topic-readstatus" value="Cannot download" onclick="javaScript:alert('You do not have enough points')">
+                  Download
+                </a>
+
+                <div class="m-topic-cell m-topic-readstatus">
+                  <img class="last-post-profile" src="{{this.avatar}}">
+                  <div class="last-post-date">
+                    {{this.user_id}}
+                    <span>{{this.time}}</span>
+                  </div>
+                </div>
+                <div class="m-topic-cell m-topic-check"></div>
+              {{/each}}
+
+            {{/if}}
+
+            </div>
+          </div>
+        
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Upload your note</p>
+            <form class="cd-form" method="post" action="/course/notes" id="submitForm">
+              <div class = "upload" >
+                <input type = "file" name = "studyNotes" id = "studyNotes">
+                {{#if canUpload}}
+                <input class="full-width has-padding" type="submit" value="submit">
+                {{else}}
+                <input class="full-width has-padding" onclick="javaScript:alert('You hit the number of uploading notes')" type=button value="submit">
+                {{/if}}
+
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!--Editor Test Part End -->
+
+        <div class="footer">
+          <a class="about" href="/about"><b>About us</b></a>
+          <a class="contact" href="/contact"><b>Contact us</b></a>
+          <a class="company">&copy; 2017 Symposium, Inc.</a>
+        </div>
+
+        <script>
+        function myFunction() {
+          var x;
+          if (confirm("Upload a note!") == true) {
+          }
+          document.getElementById("demo").innerHTML = x;
+        }
+        function prompt_createPost_error(){
+          alert("You need to log in first!");
+        }
+        </script>
+
+        <script>
+                  // Get the modal
+                  var modal = document.getElementById('myModal');
+                  // Get the button that opens the modal
+                  var btn = document.getElementById("myBtn");
+                  // Get the <span> element that closes the modal
+                  var span = document.getElementsByClassName("close")[0];
+                  // When the user clicks the button, open the modal
+                  btn.onclick = function() {
+                    modal.style.display = "block";
+                  }
+                  // When the user clicks on <span> (x), close the modal
+                  span.onclick = function() {
+                    modal.style.display = "none";
+                  }
+                  // When the user clicks anywhere outside of the modal, close it
+                  window.onclick = function(event) {
+                    if (event.target == modal) {
+                      modal.style.display = "none";
+                    }
+                  }
+        </script>
+
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+                  <script src="../stylesheets_wjz/assets/js/bootstrap.min.js"></script>
+                  <script src="../stylesheets_wjz/assets/js/main.js"></script>
+</body>
+</html>
