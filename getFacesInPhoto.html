@@ -1,0 +1,119 @@
+
+<head>
+    <title>Detect Faces Sample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+
+<script type="text/javascript">
+    function getFacesInPhoto(imageurl, schoolName, azureApiKey) {
+        var confidence = .65;
+        // **********************************************
+        // *** Update or verify the following values. ***
+        // **********************************************
+
+        // Replace the subscriptionKey string value with your valid subscription key.
+        var subscriptionKey = azureApiKey;
+
+        // Replace or verify the region.
+        //
+        // You must use the same region in your REST API call as you used to obtain your subscription keys.
+        // For example, if you obtained your subscription keys from the westus region, replace
+        // "westcentralus" in the URI below with "westus".
+        //
+        // NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
+        // a free trial subscription key, you should not need to change this region.
+        var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect"
+        // Request parameters.
+        var params = {
+
+        };
+
+        // Perform the REST API call.
+        $.ajax({
+            url: uriBase + "?" + $.param(params),
+
+            // Request headers.
+            beforeSend: function(xhrObj){
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+            },
+
+            type: "POST",
+
+            // Request body.
+            data: '{"url": ' + '"' + imageurl + '"}',
+        })
+
+        .done(function(data) {
+            // Show formatted JSON on webpage.
+            len = data.length;
+            faceIds = []
+            //console.log(data);
+            for(var i = 0; i < len; i++) {
+              //console.log(data[i]["faceId"]);
+              faceIds.push('"'+data[i]["faceId"] + '"');
+            }
+            //console.log('{"faceIds":[' + faceIds + '], "personGroupId":' + schoolName + '}');
+
+
+                //check if any of the identified faces are known
+                uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/identify"
+                // Request parameters.
+                params = {
+
+                };
+
+                // Perform the REST API call.
+                $.ajax({
+                    url: uriBase + "?" + $.param(params),
+
+                    // Request headers.
+                    beforeSend: function(xhrObj){
+                        xhrObj.setRequestHeader("Content-Type","application/json");
+                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+                    },
+
+                    type: "POST",
+
+                    // Request body.
+
+                    //console.log(faceIds);
+                    data: '{"faceIds":[' + faceIds + '], "personGroupId":"' + schoolName + '",' + '"confidenceThreshold":"' + confidence + '"}',
+                })
+
+                .done(function(data) {
+                    // Show formatted JSON on webpage.
+                    //console.log(data);
+                    toreturn = [];
+                    for(i=0; i<data.length;i++) {
+                      if(data[i]["candidates"].length > 0) {
+                        //console.log(data[i]["candidates"][0]["personId"]);
+                        toreturn.push(data[i]["candidates"][0]["personId"]);
+                      }
+                    }
+                  //console.log(toreturn);
+                  return toreturn;
+                    //console.log($("#responseTextArea").val(JSON.stringify(data, null, 2)));
+                })
+
+                .fail(function(jqXHR, textStatus, errorThrown) {
+                    // Display error message.
+                    var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+                    errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ? 
+                        jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
+                    alert(errorString);
+                });
+        })
+
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            // Display error message.
+            var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+            errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ? 
+                jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
+            alert(errorString);
+        });
+    };
+  
+//test it
+getFacesInPhoto("https://media.bizj.us/view/img/10294641/unspecified*750xx1001-1335-87-0.jpg", "wff", "REPLACEME")
+</script>
