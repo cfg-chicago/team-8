@@ -3,7 +3,7 @@ var async = require('async');
 var router = express.Router();
 var Mentor = require('../model/mentor');
 var Student = require('../model/student');
-
+var Team = require('../model/team');
 var User = require('../model/user');
 var bodyParser = require('body-parser');
 var app = express();
@@ -50,8 +50,10 @@ router.get('/', function(req,res,callback) {
 		 }
 
     ], function(err){
-    	res.render('discussion',{
-    		
+    	res.render('mentor',{
+    		students:stduents,
+    		team:team,
+    		username:req.user.username
     	})
     })
 });
