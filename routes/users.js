@@ -6,7 +6,7 @@ var bcrypt = require('bcryptjs');
 var Promise = require('promise');
 var moment = require('moment');
 var User = require('../model/user');
-var 
+//var Face = require('../model/face');
 var crypto = require('crypto');
 var async = require('async');
 var nodemailer = require('nodemailer');
@@ -145,13 +145,12 @@ router.post('/login', function(req, res, next) {
 // signup user
 router.post('/signup', function(req, res, next) {
 	var signupUsername = req.body.username;
+	var signupName = req.body.name;
 	var signupEmail = req.body.email;
 	var signupPassword = req.body.password;
 	var signupConfirmPassword = req.body.passwordConfirm;
-	var signupCollege = req.body.college;
-	var signupMajor = req.body.major;
+	var signupType= req.body.Type;
 	var signupAvatar = req.body.avatar;
-
 	
 	if (req.body.avatar.length === 0) {
 		req.checkBody('username', 'Username is required').notEmpty();
@@ -171,14 +170,12 @@ router.post('/signup', function(req, res, next) {
 			var newUser = new User({
 				username: signupUsername,
 				email: signupEmail,
-				password: signupPassword,
-				college: signupCollege,
-				major: signupCollege,
+				password: signupPassword,			
 				avatar: defaultAvatar,
-				point: 5,
-				numberOfUploading: 0
-			});
+				faceId: faceId
 
+			});
+		    
 			User.find({$or: [{username: signupUsername}, {email: signupEmail}]}, function(err, docs) {
 				if (docs.length) {
 					req.flash('error_msg', 'The username or email has already existed');
@@ -223,14 +220,13 @@ router.post('/signup', function(req, res, next) {
 				});
 			} else {
 				var url = res2.Location;
+				//var faceId = face.find(url);
 				var newUser = new User({
 					username: signupUsername,
 					email: signupEmail,
-					password: signupPassword,
-					college: signupCollege,
-					major: signupCollege,
-					avatar: url,
-					point: 5
+					password: signupPassword,			
+					avatar: defaultAvatar,
+					faceId: faceId
 				});
 
 				User.find({$or: [{username: signupUsername}, {email: signupEmail}]}, function(err, docs) {

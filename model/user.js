@@ -22,6 +22,9 @@ var UserSchema = mongoose.Schema({
   type: {
     type: String
   },
+  faceId: {
+    type: String 
+  },
   resetPasswordToken: String,
   resetPasswordExpires: Date
 

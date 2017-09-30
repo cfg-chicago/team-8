@@ -7,8 +7,8 @@ var StudentSchema = mongoose.Schema({
 		index: true
 	},
 	userId: {
-		type: String
-	}
+		type:String
+	},
 	gradeLevel: {
 		type: Number
 	},
