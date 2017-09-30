@@ -101,9 +101,9 @@ router.post('/login', function(req, res, next) {
 		});
 			loginPt.then(function() {
 				console.log(req.user);
-				if(req.user.type == "mentor")
+				if(req.user.type == "Mentor")
 				res.redirect('/mentor');
-				if(req.user.type == 'Student')
+				if(req.user.type == 'student')
 				res.redirect('/student');
 			});
 		});
@@ -149,7 +149,7 @@ router.post('/signup', function(req, res, next) {
 
 			});
 		    
-        console.log("users");	
+       
 			User.find({$or: [{username: signupUsername}, {email: signupEmail}]}, function(err, docs) {
 				if (docs.length) {
 					req.flash('error_msg', 'The username or email has already existed');

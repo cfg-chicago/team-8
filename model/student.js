@@ -38,6 +38,8 @@ module.exports.getStudentById = function(student_id, callback){
 };
 
 module.exports.getStudentByMentorId = function(mentorId, callback){
-	var query = {mentorId: mentorId};
+	console.log("finding the studnet");
+	var query = {mentorId:'59cf5d7bbcdece038341e5ec' };
+	console.log(query);
 	Student.find(query,callback);
 };

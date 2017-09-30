@@ -31,11 +31,13 @@ router.get('/', function(req,res,callback) {
     var students = new Array();
     var team = new Object();
     var temp1 = new Array();
-    async.series([
-
+    console.log(req.user._id);
+   /* async.series([
     	function(callback){
-		    Stduent.getStudentByMentorId(req.user.id, function(err,student){
-		    	temp1 = JSON.parse(JSON,stringify(student));
+		    Student.getStudentByMentorId(req.user._id, function(err,studentI){
+                var stringify = JSON.stringify(studentI);
+		    	temp1 = JSON.parse(stringify);
+                console.log(temp1);
                 localStorage.setItem('students', temp1);
 		    		for(var key in temp1){
 		    			if(typeof temp1[key] != "undefined"){
@@ -47,19 +49,25 @@ router.get('/', function(req,res,callback) {
 		    });
 		 },
 		 function(callback){
-		 	Team.getTeamByMentorId(req.user.id, function(err,team){
+              console.log('test');
+		 	Team.getTeamByMentorId(req.user._id, function(err,teamI){
 		 	team = new Object(); 
+            team = JSON.parse(JSON.stringify(teamI));
 		 	callback(null,team);
 		 	});
 		 }
-
+      
     ], function(err){
+         console.log(test);
     	res.render('mentor',{
     		students:stduents,
     		team:team,
     		username:req.user.username
     	})
     })
+*/
+     
+        res.render('mentor');
 });
 
 router.get('/student1', function(req,res,callback) {
