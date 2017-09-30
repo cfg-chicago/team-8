@@ -7,7 +7,7 @@ exports.addUser = function(username, imageurl, schoolName, azureApiKey) {
     // schoolname is what is returned by setupFaces(). 
     // azureApiKey is your Microsoft Azure face API key.
     // returns personId which should be stored as an attribute of the user.
-    var subscriptionKey = azureApiKey;
+    
     var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/" + schoolName + "/persons"
 
     var params = {};

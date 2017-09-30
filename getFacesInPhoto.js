@@ -2,6 +2,12 @@ var request = require("request");
 //require('request').debug = true //turn on for debugging mode
 
 exports.getFacesInPhoto = function(imageurl, schoolName, azureApiKey) {
+    //getFacesInPhoto(imageurl, schoolName, azureApiKey)
+    //imageurl is the http address of a photo to identify the people in
+    //school name is the group name of the azure face. Use the same one you used in setupFace.
+    //azureApiKey is your Microsoft Azure Face API key
+    //returns: list of personIds identified in the photo.
+    
     var confidence = '.65'; //only returns user ID's if they're above this confidence level.
     var subscriptionKey = azureApiKey;
 

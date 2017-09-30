@@ -1,7 +1,11 @@
 var request = require("request");
 
 exports.setupFaces function(schoolName, azureApiKey) {
-
+    //setufFaces(schoolName, azureApiKey)
+    //schoolName is the name of the person group to create.
+    //    it needs to be an alphanumeric string. Save this to use later.
+    //azureApiKey is your Microsoft Azure Face API key.
+    
     var subscriptionKey = azureApiKey;
 
     // NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
