@@ -6,6 +6,12 @@
 
 <script type="text/javascript">
     function addUser(username, imageurl, schoolName, azureApiKey) {
+        //addUser 
+        // username is the string of the user to be added
+        // imageurl is the address of the new user's headshot which will be referenced in facial recognition  software.
+        // schoolname is what is returned by setupFaces(). 
+        // azureApiKey is your Microsoft Azure face API key.
+        // returns personId which should be stored as an attribute of the user.
         var subscriptionKey = azureApiKey;
         var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/" + schoolName + "/persons"
 
