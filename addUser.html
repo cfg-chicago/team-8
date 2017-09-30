@@ -48,6 +48,82 @@
             personId = data["personId"];
             console.log(data["personId"]);
             //console.log($("#responseTextArea").val(JSON.stringify(data, null, 2)));
+        //add image to the user
+                uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/" + schoolName + "/persons/" + personId + "/persistedFaces"
+                // Request parameters.
+                params = {
+
+                };
+
+                // Perform the REST API call.
+                $.ajax({
+                    url: uriBase + "?" + $.param(params),
+
+                    // Request headers.
+                    beforeSend: function(xhrObj){
+                        xhrObj.setRequestHeader("Content-Type","application/json");
+                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+                    },
+
+                    type: "POST",
+
+                    // Request body.
+                    data: '{"url": ' + '"' + imageurl + '"}',
+                })
+
+                .done(function(data) {
+                    // Show formatted JSON on webpage.
+                    //console.log(data["personId"]);
+                    //console.log($("#responseTextArea").val(JSON.stringify(data, null, 2)));
+
+
+                    //have group retrain itself
+                                  uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/" + schoolName + "/train"
+                            // Request parameters.
+                            params = {
+
+                            };
+
+                            // Perform the REST API call.
+                            $.ajax({
+                                url: uriBase + "?" + $.param(params),
+
+                                // Request headers.
+                                beforeSend: function(xhrObj){
+                                    xhrObj.setRequestHeader("Content-Type","application/json");
+                                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+                                },
+
+                                type: "POST",
+
+                                // Request body.
+                                data: '',
+                            })
+
+                            .done(function(data) {
+                                // Show formatted JSON on webpage.
+                                //console.log(data["personId"]);
+                                //console.log($("#responseTextArea").val(JSON.stringify(data, null, 2)));
+                                console.log("success!");
+                                return personId; //personId to be stored in database
+                            })
+
+                            .fail(function(jqXHR, textStatus, errorThrown) {
+                                // Display error message.
+                                var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+                                errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ? 
+                                    jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
+                                alert(errorString);
+                            });
+                })
+
+                .fail(function(jqXHR, textStatus, errorThrown) {
+                    // Display error message.
+                    var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+                    errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ? 
+                        jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
+                    alert(errorString);
+                });
         })
 
         .fail(function(jqXHR, textStatus, errorThrown) {
@@ -57,66 +133,8 @@
                 jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
             alert(errorString);
         });
-
-
-
-      //add image to the user
-        uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/" + schoolName + "/persons/" + personId + "/persistedFaces"
-        // Request parameters.
-        params = {
-
-        };
-
-        // Perform the REST API call.
-        $.ajax({
-            url: uriBase + "?" + $.param(params),
-
-            // Request headers.
-            beforeSend: function(xhrObj){
-                xhrObj.setRequestHeader("Content-Type","application/json");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            },
-
-            type: "POST",
-
-            // Request body.
-            data: '{"url": ' + '"' + imageurl + '"}',
-        })
-
-        .done(function(data) {
-            // Show formatted JSON on webpage.
-            //console.log(data["personId"]);
-            //console.log($("#responseTextArea").val(JSON.stringify(data, null, 2)));
-        })
-
-        .fail(function(jqXHR, textStatus, errorThrown) {
-            // Display error message.
-            var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
-            errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ? 
-                jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
-            alert(errorString);
-        });
-
-
-      //have group retrain itself
     };
-        
-  /* what postman exported
-  //make new person group. One per school.
-  PUT /face/v1.0/persongroups/{personGroupId} HTTP/1.1
-  Host: westcentralus.api.cognitive.microsoft.com
-  Content-Type: application/json
-  Ocp-Apim-Subscription-Key: 1915dbebbe264b949cbff76009550baa //change me to your azure api key
-  Cache-Control: no-cache
-//  Postman-Token: d8eca926-7e44-ebe0-905d-bfe1d9f96ba7
-
-  {
-    "name":schoolname, 
-    "userData":"optional"
-  }
-
-  */
   
-
-addUser("chuck norris", "https://www.famousbirthdays.com/faces/norris-chuck-image.jpg", "wff", "1915dbebbe264b949cbff76009550baa")
+//test it
+addUser("test2", "https://creationsciencestudy.files.wordpress.com/2014/02/michael-jackson.jpg", "wff", "CHANGEME")
 </script>
