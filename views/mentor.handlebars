@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study Notes</title>
+
+  <link href="../stylesheets_wjz/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../stylesheets_wjz/assets/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../stylesheets_wjz/assets/css/styles.css" rel="stylesheet">
+  <link href="../stylesheets_wjz/assets/css/note.css" rel="stylesheet">
+    <link href="../stylesheets/mentorMain.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+  <!--NAVBAR SECTION START -->
+
+  <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+
+    <div class="dropdown">
+      <button class="navbar-toggler navbar-toggler-right dropbtn" type="button" data-toggle="collapse" data-target="#navbar-collapse-1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div id="navbar-collapse-1" class="dropdown-content">
+        <ul class="nav navbar-nav navbar-right" >
+          {{#if user}}
+          <li class="sampleText">Hi! <strong>{{username}}</strong></li>
+          <a href="/users/profile">Profile</a>
+          <a href="/users/logout">Log Out</a>
+          {{else}}
+          <a href="/users/signup">Sign Up</a>
+          <a href="/users/login">Log In</a>
+          {{/if}}
+
+        </ul>
+      </div>
+    </div>
+
+    <a class="navbar-brand" href="/">Symposium</a>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      <form class="form-inline mt-2 mt-md-0" action="/" method="post">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" name="coursename"/>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav ml-auto">
+
+        {{#if user}}
+        <a class="nav-link prompt"> Welcome! {{username}} has {{point}} points!</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="/users/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/logout">Log Out</a>
+        </li>
+        {{else}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/users/signup">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/login">Log In</a>
+        </li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <br>
+          <!-- Insert mentors -->
+          <h1>Mentor</h1>
+          <!-- Insert team name -->
+          <h1>Team # </h1>
+          <br>
+          <figure class = "ww">
+              <a href = "input.html"><img src = "images/1.png"></a>
+              <figcaption>
+                  <input type="checkbox" value="None" id="squaredTwo" name="check" onchange="takeAttendance(this,'userOne')"/>
+                  <span id = "userOne">name1</span>
+              </figcaption>
+          </figure>
+          <figure>
+              <a href = "input.html"><img src = "images/2.png"></a>
+              <figcaption>
+                  <input type="checkbox" value="None" id="squaredTwo" name="check" onchange="takeAttendance(this,'userTwo')"/>
+                  <span id = "userTwo">name2</span>
+              </figcaption>
+          </figure>
+          <br/>
+          <figure class = "ww">
+              <a href = "input.html"><img src = "images/3.png"></a>
+              <figcaption>
+                  <input type="checkbox" value="None" id="squaredTwo" name="check" onchange="takeAttendance(this,'userThree')"/>
+                  <span id = "userThree">name3</span>
+              </figcaption>
+          </figure>
+          <figure>
+              <a href = "input.html"><img src = "images/4.png"></a>
+              <figcaption>
+                  <input type="checkbox" value="None" id="squaredTwo" name="check" onchange="takeAttendance(this,'userFour')"/>
+                  <span id = "userFour">name4</span>
+              </figcaption>
+          </figure>
+
+
+
+          <div class="slideshow">
+              <img class="mySlides" src="images/1.png">
+              <img class="mySlides" src="images/2.png">
+              <img class="mySlides" src="images/3.png">
+              <img class="mySlides" src="images/4.png">
+          </div>
+
+          <br>
+          <br>
+          <br>
+          <br>
+
+
+
+
+        <!--Editor Test Part End -->
+
+        <div class="footer">
+          <a class="about" href="/about"><b>About us</b></a>
+          <a class="contact" href="/contact"><b>Contact us</b></a>
+          <a class="company">&copy; 2017 Symposium, Inc.</a>
+        </div>
+
+
+
+
+
+          <script>
+              function takeAttendance(who,name) {
+                  if(who.checked){
+                      who.setAttribute("disabled", "disabled");
+                      document.getElementById(name).innerHTML = "Attendance taken for " + name;
+                      //log user attendance
+                  }
+              }
+              var myIndex = 0;
+              carousel();
+
+              function carousel() {
+                  var i;
+                  var x = document.getElementsByClassName("mySlides");
+                  for (i = 0; i < x.length; i++) {
+                      x[i].style.display = "none";
+                  }
+                  myIndex++;
+                  if (myIndex > x.length) {myIndex = 1}
+                  x[myIndex-1].style.display = "block";
+                  setTimeout(carousel, 3000); // Change image every 2 seconds
+              }
+          </script>
+
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+                  <script src="../stylesheets_wjz/assets/js/bootstrap.min.js"></script>
+                  <script src="../stylesheets_wjz/assets/js/main.js"></script>
+</body>
+</html>

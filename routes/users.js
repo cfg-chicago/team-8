@@ -101,7 +101,7 @@ router.post('/login', function(req, res, next) {
 		});
 			loginPt.then(function() {
 				console.log(req.user);
-				if(req.user.type == "Mentor")
+				if(req.user.type == "mentor")
 				res.redirect('/mentor');
 				if(req.user.type == 'Student')
 				res.redirect('/student');
