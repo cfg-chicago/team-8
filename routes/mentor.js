@@ -60,8 +60,11 @@ router.get('/', function(req,res,callback) {
     ], function(err){
     
     	res.render('mentor',{
-    		students:students,
-    		team:team,
+    		student1:students[0].name,
+            student2:students[1].name,
+            student3:students[2].name,
+            student4:students[3].name,
+    		team_id:team.studentId,
     		username:req.user.username
     	})
     })
