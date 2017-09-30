@@ -12,7 +12,10 @@ var TeamSchema = mongoose.Schema({
 
    time: {
    		type: String
-   	}
+   	},
+   point: {
+   		type:String
+    }
 });
 
 var Team = module.exports = mongoose.model('User', UserSchema);
