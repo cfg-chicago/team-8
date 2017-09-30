@@ -116,17 +116,17 @@ router.get('/teamReport',function(req,res,callback) {
 });
 
 router.post('/teamReport', function(req,res,callback) {
-    var Teamscore = req.body.score;
+    var Teamscore = req.body.TeamScore;
     var review = req.body.review;
-    var photo = req.body.photo;
-    var Team = JSON.parse(localStorage.getItem("Team"));
+    var photo = 0;
+    var Team = JSON.parse(JSON.stringify(localStorage.getItem("Team")));
     var TeamID = Team.id 
 
     var newTeamReport = new TeamReport({
         TeamId: TeamID,
         Teamscore: Teamscore,
-        review: review,
-        photo: photo
+        review: Review,
+        photo: 0
        });
     res.redirect('/');
 
