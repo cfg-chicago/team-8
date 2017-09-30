@@ -16,7 +16,7 @@ var StudentSchema = mongoose.Schema({
 		type: Number
 	},
 	mentorId: {
-		type: Number
+		type: String
 	},
 	faceId: {
 		type: String 
@@ -39,7 +39,7 @@ module.exports.getStudentById = function(student_id, callback){
 
 module.exports.getStudentByMentorId = function(mentorId, callback){
 	console.log("finding the studnet");
-	var query = {mentorId:'59cf5d7bbcdece038341e5ec' };
+	var query = {mentorId: mentorId};
 	console.log(query);
 	Student.find(query,callback);
 };

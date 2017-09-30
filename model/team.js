@@ -24,7 +24,7 @@ module.exports.createTeam = function(newTeam, callback){
 	newTeam.save(callback);
 };
 
-module.exports.getTeamByMentor = function(mentorId,callback){
+module.exports.getTeamByMentorId = function(mentorId,callback){
      var query = {mentorId: mentorId};
      Team.findOne(query,callback);
 

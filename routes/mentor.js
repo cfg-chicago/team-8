@@ -32,7 +32,7 @@ router.get('/', function(req,res,callback) {
     var team = new Object();
     var temp1 = new Array();
     console.log(req.user._id);
-   /* async.series([
+    async.series([
     	function(callback){
 		    Student.getStudentByMentorId(req.user._id, function(err,studentI){
                 var stringify = JSON.stringify(studentI);
@@ -44,7 +44,7 @@ router.get('/', function(req,res,callback) {
 		    			   students.push(temp1[key]);
                         }
 		    		}
-		    		consol.log("students" + students);
+		    		console.log("students" + students);
 		         callback(null, students);
 		    });
 		 },
@@ -58,16 +58,16 @@ router.get('/', function(req,res,callback) {
 		 }
       
     ], function(err){
-         console.log(test);
+    
     	res.render('mentor',{
-    		students:stduents,
+    		students:students,
     		team:team,
     		username:req.user.username
     	})
     })
-*/
+
      
-        res.render('mentor');
+        //res.render('mentor');
 });
 
 router.get('/student1', function(req,res,callback) {
