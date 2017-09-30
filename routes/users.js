@@ -95,50 +95,16 @@ router.post('/login', function(req, res, next) {
 			if (err) {return next(err);}
 			var loginPt = new Promise(function(resolve, reject) {
 				req.flash('success_msg', 'You are logged in');
-				
-				function timeToMidnight() {
-					console.log('2');
-					var now = new Date();
-					var end = moment().endOf("day");
-					return end - now + 1000;
-				}
-
-				function midNightReset() {
-				// Give 2 free points every day the user logs in
-				var reset = new Promise(function(res, rej) {
-					if (flagTwoPt === true) {
-						req.flash('success_msg', ' You got two points!');
-						var newPoint = req.user.point + 2;
-						var query = {'username': req.user.username};
-						// Update points in db
-						User.findOneAndUpdate(query, {
-							'point': newPoint
-						}, {upsert: true},
-						function(err, user){
-							if(err) throw err;
-							flagTwoPt = false;
-						});
-					}
-					resolve();
-				});
-				// Reset the flag at mid might
-				reset.then(function() {
-					flagTwoPt = true;
-					setTimeout(midNightReset, timeToMidnight());
-				});
-				
-			}
-
-			midNightReset();
+			
 			
 			resolve();
 		});
 			loginPt.then(function() {
 				console.log(req.user);
 				if(req.user.type == "Mentor")
-				res.redirect('/Mentor');
+				res.redirect('/mentor');
 				if(req.user.type == 'Student')
-				res.redirect('/Student');
+				res.redirect('/student');
 			});
 		});
 })(req, res, next);
