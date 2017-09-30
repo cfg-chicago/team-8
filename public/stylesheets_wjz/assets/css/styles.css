@@ -1,0 +1,454 @@
+body {
+  background: #f7f7f7; 
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; 
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+}
+
+/*=====================================
+  NAVBAR STYLES
+    ===================================*/
+
+/* Brand Name Modifier after Bootstrap.min */
+.navbar {
+  padding-top: 1.15rem;
+  padding-bottom: 1.15rem;
+}
+
+.navbar-brand {
+    padding-left: 0.75rem;
+    padding-right: 1rem;
+    font-size: 2.05rem;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-toggler {
+    color: #b4a046;
+}
+
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-toggler:focus, .navbar-inverse .navbar-toggler:hover {
+    color: #ccb85f
+}
+
+.dropbtn {
+    background-color: rgba(255, 255, 255, .15);
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right:0;
+    top: 46px;;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #f0ad4e;
+}
+
+.navbar-inverse .navbar-nav .nav-link {
+    color: rgba(180, 160, 70, .5)
+}
+
+.navbar-inverse .navbar-nav .nav-link:focus, .navbar-inverse .navbar-nav .nav-link:hover {
+    color: rgba(180, 160, 70, .75)
+}
+
+.navbar-inverse .navbar-nav .nav-link.disabled {
+    color: rgba(180, 160, 70, .25)
+}
+
+.navbar-inverse .navbar-nav .active > .nav-link, .navbar-inverse .navbar-nav .nav-link.active, .navbar-inverse .navbar-nav .nav-link.open, .navbar-inverse .navbar-nav .open > .nav-link {
+    color: rgb(180, 160, 70)
+}
+
+
+
+/* NAVBAR STYLES ENDS */
+
+/*=====================================
+  BUTTON STYLES
+    ===================================*/
+
+/* For Nav Search Button */
+
+.btn-outline-success {
+    color: #b4a046;
+    background-image: none;
+    background-color: transparent;
+    border-color: #b4a046;
+}
+
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: #b4a046;
+    border-color: #ccb653;
+}
+
+.btn-outline-success.focus, .btn-outline-success:focus {
+    -webkit-box-shadow: 0 0 0 2px rgba(92, 184, 92, .5);
+    box-shadow: 0 0 0 2px rgba(92, 184, 92, .5)
+}
+
+.btn-outline-success.disabled, .btn-outline-success:disabled {
+    color: #5cb85c;
+    background-color: transparent
+}
+
+.btn-outline-success.active, .btn-outline-success:active, .show > .btn-outline-success.dropdown-toggle {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #5cb85c
+}
+
+/* Nav button Style Ends*/
+
+.container {
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+.page-actions {
+  margin-bottom: 2em !important; }
+
+.icons {
+  width: 15px; }
+
+.icons2 {
+  width: 35px; }
+
+.legend {
+  padding: 25px !important;
+  margin-top: 25px;
+  margin-bottom: 25px; }
+
+.legend-professor {
+  display: inline-block;
+  height: 20px;
+  margin: 0 10px;
+  width: 10px;
+  background: #609;
+  position: relative;
+  top: 5px; }
+
+.legend-admin {
+  display: inline-block;
+  height: 20px;
+  margin: 0 10px;
+  width: 10px;
+  background: #0CF;
+  position: relative;
+  top: 5px; }
+
+.m-box {
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #e4e4e4; }
+
+.m-board-header {
+  background-color: #434343;
+  border: 1px solid #434343;
+  box-sizing: border-box;
+  color: white; }
+
+.m-board-header-cell {
+  padding: 14px 20px 14px 20px;
+  display: table-cell; }
+
+.m-board-header-key {
+  background: transparent;
+  padding: 0 5px; }
+
+.m-board-header-title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  width: 100%; }
+  @media (min-width: 768px) {
+    .m-board-header-title {
+      width: 55%; } }
+
+.m-board-header-expand {
+  display: none; }
+  @media (min-width: 768px) {
+    .m-board-header-expand {
+      display: table-cell;
+      width: 20%; } }
+
+.m-board-header-readstatus {
+  display: none; }
+  @media (min-width: 768px) {
+    .m-board-header-readstatus {
+      display: table-cell;
+      width: 20%; } }
+
+.m-board-header-check {
+  display: none; }
+  @media (min-width: 768px) {
+    .m-board-header-check {
+      display: table-cell;
+      width: 5%; } }
+
+.m-board {
+  background-color: #f2f2f2;
+  border: 1px solid #e4e4e4;
+  box-sizing: border-box; }
+  .m-board:hover {
+    background-color: #fff2cc; }
+
+.m-board-first {
+  background-color: #f9e2d1;
+  border: 1px solid #e4e4e4;
+  box-sizing: border-box; }
+  .m-board-first:hover {
+    background-color: #fff2cc; }
+
+.m-board-cell {
+  padding: 26px 20px 26px 20px; }
+
+.m-board-c {
+  padding: 0px 15px 10px 0px; }
+
+.m-board-key {
+  background: #351c78;
+  padding: 0 5px; }
+
+.m-board-title {
+  font-weight: bold;
+  width: 80%; }
+  @media (min-width: 768px) {
+    .m-board-title {
+      display: table-cell;
+      width: 55.42%; } }
+
+.m-board-expand {
+  display: none; }
+  @media (min-width: 768px) {
+    .m-board-expand {
+      display: table-cell;
+      width: 20%; } }
+
+.m-board-readstatus {
+  display: none; }
+  @media (min-width: 768px) {
+    .m-board-readstatus {
+      display: table-cell;
+      width: 20%; } }
+
+.m-board-check {
+  display: block; }
+  @media (min-width: 768px) {
+    .m-board-check {
+      display: table-cell;
+      width: 5%; } }
+
+.m-topic {
+  background-color: transparent;
+  border-bottom: 1px solid #e4e4e4;
+  box-sizing: border-box;
+  margin-left: 20px; }
+  .m-topic:hover {
+    background-color: #fff2cc; }
+
+.m-topic-cell {
+  padding: 18px; }
+
+.m-topic-key {
+  background: transparent;
+  padding: 0 5px; }
+
+.m-topic-title {
+  font-weight: bold;
+  width: 100%; }
+  @media (min-width: 768px) {
+    .m-topic-title {
+      display: table-cell;
+      width: 55%; } }
+
+.m-topic-expand {
+  display: none; }
+  @media (min-width: 768px) {
+    .m-topic-expand {
+      display: table-cell;
+      width: 20%; } }
+
+.m-topic-readstatus {
+  display: none; }
+  @media (min-width: 768px) {
+    .m-topic-readstatus {
+      display: table-cell;
+      width: 15%; } }
+
+.m-topic-check {
+  display: none; }
+  @media (min-width: 768px) {
+    .m-topic-check {
+      display: table-cell;
+      width: 10%; } }
+
+.last-post-profile {
+  float: left;
+  margin-right: 5px;
+  width: 35px;
+  height: 35px; }
+
+.last-post-date span {
+  display: block;
+  font-size: 12px; }
+
+.btn-group-lg > .btn, .btn-lg {
+  font-size: 13px;
+  border-radius: 3px;
+  font-weight: bold; }
+
+.btn-primary {
+  color: white;
+  background-color: #434343;
+  border-color: #434343; }
+  .btn-primary:hover {
+    background-color: #191919;
+    border-color: #191919; }
+
+.m-label {
+  display: inline;
+  padding: 5px;
+  border-radius: 8px;
+  text-align: center;
+  background: #434343;
+  color: white; }
+
+.m-label-unread {
+  background: #f0ad4e;
+  color: #434343; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300; }
+
+.page-title {
+  margin-bottom: 1em; }
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*# sourceMappingURL=styles.css.map */
+
+/* =========================
+        Footer Form 
+============================*/
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.8rem;
+  text-align: center;
+  background-color: #1a1a1a;
+  color: #b4a046;
+  text-decoration: none;
+  width: 100%;
+}
+.about {
+  color: #b4a044;
+}
+
+.company {
+  color: #b4a044;
+}
+
+.contact {
+  color: #b4a044;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #c9b24e;
+}

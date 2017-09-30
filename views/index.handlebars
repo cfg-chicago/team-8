@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="stylesheets_wjz/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheets/index.css"> <!-- Gem style -->
+  <script src="javascripts/modernizr.js"></script> <!-- Modernizr -->
+  
+  <title>team_8</title>
+</head>
+
+<div class="row">
+  <div class="col-lg-12">
+    {{#if success_msg}}
+    <div class="alert alert-success">{{success_msg}}</div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="alert alert-danger">{{error_msg}}</div>
+    {{/if}}
+
+    {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+    
+    {{{body}}}
+  </div>
+</div>
+
+
+<body>
+
+<!--NAVBAR SECTION START -->
+
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+
+  <div class="dropdown">
+    <button class="navbar-toggler navbar-toggler-right dropbtn" type="button" data-toggle="collapse" data-target="#navbar-collapse-1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-collapse-1" class="dropdown-content">
+      <ul class="nav navbar-nav navbar-right" >
+                {{#if user}}
+                <li class="sampleText">Hi! <strong>{{username}}</strong></li>
+                <a href="/users/profile">Profile</a>
+                <a href="/users/logout">Log Out</a>
+                {{else}}
+                <a href="/users/signup">Sign Up</a>
+                <a href="/users/login">Log In</a>
+                {{/if}}
+            </ul>
+          </div>
+        </div>
+
+
+        <a class="navbar-brand" href="/">team_8</a>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+                  {{#if user}}
+                  <a class="nav-link prompt"> Welcome! {{username}} has {{point}} points!</a>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/users/profile">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/users/logout">Log Out</a>
+                  </li>
+                  {{else}}
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/users/signup">Sign Up</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/users/login">Log In</a>
+                  </li>
+                  {{/if}}
+            </ul>
+          </div>
+        </nav>
+
+
+
+        <div class="row">
+          <div class="col-lg-12">
+            {{#if success_msg}}
+            <div class="alert alert-success">{{success_msg}}</div>
+            {{/if}}
+
+            {{#if error_msg}}
+            <div class="alert alert-danger">{{error_msg}}</div>
+            {{/if}}
+
+            {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
+            {{/if}}
+            
+            {{{body}}}
+          </div>
+        </div> 
+
+        <div class="logo1">
+          <img src="images/logo-2.png" alt="" style="width:800px; height:210px"/>
+          <div class="search">
+            <div class="search--wrapper">
+              <form action="#" method="post" class="flexsearch--form">
+                <div class="search--input-wrapper">
+                  <input type="search" placeholder="Type in your course here" class="search--input" name="coursename"/>
+                  <input type="submit" value="➜" class="search--submit" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Josn End-->
+
+        <div class="footer">
+          <a class="company">&copy; 2017 team_8, Inc.</a>
+        </div>
+
+      </body>
+      </html>

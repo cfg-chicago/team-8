@@ -1,0 +1,15 @@
+.btn-group-lg>.btn, .btn-lg {
+    font-size: 13px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    color: $white;
+    background-color: $tundora;
+    border-color: $tundora;
+    &:hover {
+    	background-color: $cod-gray;
+    	border-color: $cod-gray;
+    }
+}

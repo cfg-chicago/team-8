@@ -37,25 +37,25 @@
 
 	ul.icons {
 		background: #333;
-		-ms-behavior: url("../public/js/ie/PIE.htc");
+		-ms-behavior: url("/js/ie/PIE.htc");
 	}
 
 /* Button */
 
 	.button {
-		-ms-behavior: url("../public/js/ie/PIE.htc");
+		-ms-behavior: url("/js/ie/PIE.htc");
 	}
 
 /* Icons */
 
 	.icon.circled {
-		-ms-behavior: url("../public/js/ie/PIE.htc");
+		-ms-behavior: url("/js/ie/PIE.htc");
 	}
 
 /* Header */
 
 	#header {
-		-ms-behavior: url("../public/js/ie/backgroundsize.min.htc");
+		-ms-behavior: url("/js/ie/backgroundsize.min.htc");
 	}
 
 	body.homepage #header {
@@ -76,7 +76,7 @@
 	}
 
 	#nav > ul > li {
-		-ms-behavior: url("../public/js/ie/PIE.htc");
+		-ms-behavior: url("/js/ie/PIE.htc");
 	}
 
 		#nav > ul > li.active {
@@ -85,7 +85,7 @@
 
 	.dropotron {
 		background: #fff;
-		-ms-behavior: url("../public/js/ie/PIE.htc");
+		-ms-behavior: url("/js/ie/PIE.htc");
 	}
 
 		.dropotron li {
@@ -108,7 +108,7 @@
 		height: 7em;
 		margin-top: -3.5em;
 		border-radius: 100%;
-		-ms-behavior: url("../public/js/ie/PIE.htc");
+		-ms-behavior: url("/js/ie/PIE.htc");
 	}
 
 		.carousel .forward:before, .carousel .backward:before {

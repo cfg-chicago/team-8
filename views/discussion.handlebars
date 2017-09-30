@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="Jingzhou Wang" content="">
+
+
+    <link href="../stylesheets_wjz/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../stylesheets_wjz/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../stylesheets_wjz/assets/css/styles.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<div class="row">
+    <div class="col-lg-12">
+        {{#if success_msg}}
+            <div class="alert alert-success">{{success_msg}}</div>
+        {{/if}}
+
+        {{#if error_msg}}
+            <div class="alert alert-danger">{{error_msg}}</div>
+        {{/if}}
+
+        {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
+        {{/if}}
+
+        {{{body}}}
+    </div>
+</div>
+
+<body>
+
+<!--NAVBAR SECTION START -->
+
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+
+    <div class="dropdown">
+        <button class="navbar-toggler navbar-toggler-right dropbtn" type="button" data-toggle="collapse"
+                data-target="#navbar-collapse-1" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbar-collapse-1" class="dropdown-content">
+            <ul class="nav navbar-nav navbar-right">
+                {{#if user}}
+                    <a class="sampleText">Hi! <strong>{{username}}</strong></a>
+                    <a href="/users/profile">Profile</a>
+                    <a href="/users/logout">Log Out</a>
+                {{else}}
+                    <a href="/users/signup">Sign Up</a>
+                    <a href="/users/login">Log In</a>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+
+    <a class="navbar-brand" href="/">team_8</a>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+        <form class="form-inline mt-2 mt-md-0" action="/" method="post">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="coursename"/>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav ml-auto">
+            {{#if user}}
+                <a class="nav-link prompt"> Welcome! {{username}} has {{point}} points!</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/users/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/logout">Log Out</a>
+                </li>
+            {{else}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/users/signup">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/login">Log In</a>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>
+
+<!-- NAV BAR ENDS -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            <h2 class="page-title">Discussion Boards</h2>
+            <div class="m-box page-actions">
+                <div class="col-md-7">
+                    <a href="/" class="btn btn-default btn-lg" type="submit"><i class="fa fa-search"
+                                                                                aria-hidden="true"></i> Back to Home</a>
+                        {{#if user}}
+                        <button class="btn btn-default btn-lg" onclick="Main_reply()" id="myBtn">Create Subject</button>
+                        {{else}}
+                        <button class="btn btn-default btn-lg" onclick="prompt_createPost_error()">Create Subject</button>
+                        {{/if}}
+
+                    <a href="notes" class="btn btn-default btn-lg" type="submit"><img
+                            src="../stylesheets_wjz/assets/images/icon-group-study.svg" class="icons"> Study Note</a>
+                </div><!-- end col-md-9 -->
+                <div class="col-md-5">
+                    <a class="btn btn-lg btn-primary pull-right" href="/course" role="button">Course page &raquo;</a>
+                </div><!-- end col-md-5 -->
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="m-board-header">
+                <div class="m-board-header-cell m-board-header-key"></div>
+                <div class="m-board-header-cell m-board-header-title">
+                    Course Boards
+                </div>
+                <div class="m-board-header-cell m-board-header-expand">
+                    <div class="js-collapse-all">
+                        <i class="fa fa-compress" aria-hidden="true"></i> Collapse All
+                    </div>
+                    <div class="js-expand-all">
+                        <i class="fa fa-expand" aria-hidden="true"></i> Expand All
+                    </div>
+                </div>
+                <div class="m-board-header-cell m-board-header-readstatus">
+
+                </div>
+                <div class="m-board-header-cell m-board-header-check">
+
+                </div>
+            </div>
+
+
+            {{#each posts}}
+                <div class='{{#if @first}}m-board-first{{else}}m-board{{/if}}'>
+                    <div class="m-board-cell m-board-key"></div>
+                    <div id="main_inform" class="m-board-cell m-board-title">
+                            {{this.MainPost.information}}
+                    </div>
+
+                        {{#if ../user}}
+                        <div class="m-topic-cell m-topic-check">
+                            <button onclick="rating('{{this.MainPost._id}}')"><img
+                                    src="../stylesheets_wjz/assets/images/like.png" class="icons2"></button>
+                            <div class="m-label">{{this.MainPost.countUp}}</div>
+                        </div>
+                        {{else}}
+                        <div class="m-topic-cell m-topic-check">
+                            <button onclick="prompt_createPost_error()"><img
+                                    src="../stylesheets_wjz/assets/images/like.png" class="icons2"></button>
+                            <div class="m-label">{{this.MainPost.countUp}}</div>
+                        </div>
+                        {{/if}}
+
+                    <div class="m-topic-cell m-topic-readstatus">
+
+                        {{#if ../user}}
+                        <ul>
+                                <li><a class="m-board-c m-board-check" id="myBtn"
+                                       onclick="Sub_reply('{{this.MainPost._id}}')">Comment
+                                </a></li>
+                                <li><a class="m-board-c m-board-check" id="myBtn"
+                                       onclick="editPost('{{this.MainPost._id}}','{{this.MainPost.information}}' , '{{../username}}','{{this.MainPost.user_id}}')">Edit
+                                </a></li>
+                                <li><a class="m-board-c m-board-check" onclick="deletePost('{{this.MainPost._id}}', '{{../username}}','{{this.MainPost.user_id}}',1)">Delete
+                                </a></li>
+                        </ul>
+                        {{else}}
+                        <ul>
+                                <li><a class="m-board-c m-board-check" 
+                                       onclick="prompt_createPost_error()">Comment
+                                </a></li>
+                                <li><a class="m-board-c m-board-check" 
+                                       onclick="prompt_createPost_error()">Edit
+                                </a></li>
+                                <li><a class="m-board-c m-board-check" onclick="prompt_createPost_error()">Delete
+                                </a></li>
+                        </ul>
+                        {{/if}}
+                    </div>
+                    <div class="m-topic-cell m-topic-readstatus">
+                        <img class="last-post-profile" src="{{this.MainPost.avator}}">
+                        <div class="last-post-date">
+                            {{this.MainPost.user_id}}
+                            <span>{{this.MainPost.date}}</span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="m-topics-container">
+                    {{#each this.SubPosts}}
+                        <div class="m-topic">
+                            <div class="m-topic-cell m-topic-key"></div>
+                            <div class="m-topic-cell m-topic-title">
+                                    {{this.information}}
+                            </div>
+
+                            <div class="m-topic-cell m-topic-readstatus">
+                            </div>
+
+                            <div class="m-topic-cell m-topic-readstatus">
+                                {{#if ../../user}}
+                                <ul>
+                                        <li><a class="m-board-c m-board-check" id="myBtn"
+                                               onclick="editPost('{{this._id}}','{{this.information}}', '{{../../username}}','{{this.user_id}}')">Edit
+                                        </a></li>
+
+                                        <li><a class="m-board-c m-board-check" onclick="deletePost('{{this._id}}','{{../../username}}','{{this.user_id}}',0)">Delete
+                                        </a></li>
+                                </ul>
+                                {{else}}
+                                <ul>
+                                        <li><a class="m-board-c m-board-check"
+                                               onclick="prompt_createPost_error()">Edit
+                                        </a></li>
+
+                                        <li><a class="m-board-c m-board-check" onclick="prompt_createPost_error()">Delete
+                                        </a></li>
+                                </ul>
+                                {{/if}}
+                            </div>
+
+                            <div class="m-topic-cell m-topic-readstatus">
+                                <img class="last-post-profile"
+                                     src="{{this.avator}}">
+                                <div class="last-post-date">
+                                    {{this.user_id}}
+                                    <span>{{this.date}}</span>
+                                </div>
+                            </div>
+
+
+                            <div class="m-topic-cell m-topic-check">
+                            </div>
+                        </div>
+                    {{/each}}
+
+                </div>
+
+            {{/each}}
+
+        </div><!-- end row -->
+    </div><!-- end container -->
+    <br>
+    <br>
+    <br>
+    <div id="my-container" class="table-responsive">
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+
+            <center>
+                <p id="formHeader"></p>
+                <form method="post" action="" id="submitFormT">
+                    <br>
+                    <textarea name="information" rows="10" cols="30" value="" style="width:900px; height:400px"></textarea>
+                    <input type="text" name="main_post_id" value="1" style="display:none"/>
+                    <input type="text" name="main" value="1" style="display:none"/>
+                    <br>
+                    <br>
+                    <input type="submit" value="Submit Data">
+                </form>
+
+            </center>
+
+
+        </div>
+    </div>
+
+    <!--Editor Test Part End -->
+
+
+<div class="footer">
+    <a class="about" href="/about"><b>About us</b></a>
+    <a class="contact" href="/contact"><b>Contact us</b></a>
+    <a class="company">&copy; 2017 team_8, Inc.</a>
+</div>
+
+    <!--Josn Test Part START -->
+    <script>
+        function Main_reply() {
+            var x = document.getElementById('myModal');
+            x.style.display = 'block';
+            var y = document.getElementById('formHeader');
+            y.innerHTML = "Main Reply Editor";
+        }
+        function Sub_reply(main_post_id) {
+            var x = document.getElementById('myModal');
+            x.style.display = 'block';
+            var y = document.getElementById('formHeader');
+            y.innerHTML = "Make a comment to a post";
+            document.getElementById("submitFormT").elements.namedItem("main_post_id").value
+                    = main_post_id;
+        }
+        function prompt_createPost_error() {
+            alert("You need to log in first!");
+        }
+        function rating(main_post_id) {
+            var x = document.getElementById('submitFormT');
+            x.action += "/rating";
+            document.getElementById("submitFormT").elements.namedItem("main_post_id").value
+                    = main_post_id;
+            x.submit();
+        }
+        function deletePost(main_post_id, username, main_post_user_id, main) {
+            if (username == main_post_user_id) {
+                var x = document.getElementById('submitFormT');
+                x.action += "/delete";
+                document.getElementById("submitFormT").elements.namedItem("main_post_id").value
+                        = main_post_id;
+                document.getElementById("submitFormT").elements.namedItem("main").value
+                        = main;
+                x.submit();
+            } else {
+                //alert(username);
+                //alert(main_post_user_id);
+                alert("You can't delete other's post!");
+            }
+        }
+        function editPost(post_id,information, username, main_post_user_id) {
+            if (username == main_post_user_id) {
+                var x = document.getElementById('myModal');
+                x.style.display = 'block';
+                var y = document.getElementById('formHeader');
+                y.innerHTML = "Editting the post";
+                document.getElementById("submitFormT").elements.namedItem("information").value
+                        = information;
+                //document.getElementById("main_inform").innerHTML;
+                var z = document.getElementById('submitFormT');
+                z.action += "/edit";
+                document.getElementById("submitFormT").elements.namedItem("main_post_id").value
+                        = post_id;
+            } else {
+                alert("You can't edit other's posts!")
+            }
+        }
+        function prompt_createPost_error() {
+            alert("You need to log in first!");
+        }
+    </script>
+
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+            window.location.reload();
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                window.location.reload();
+            }
+        }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../stylesheets_wjz/assets/js/bootstrap.min.js"></script>
+    <script src="../stylesheets_wjz/assets/js/main.js"></script>
+    <script src="../stylesheets_wjz/assets/js/functions.js"></script>
+</body>
+</html>
+

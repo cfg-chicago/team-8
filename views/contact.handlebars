@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/stylesheets_wjz/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/stylesheets/contact.css"/>
+  
+  <script src="javascripts/modernizr.js"></script> <!-- Modernizr -->
+  <title>team_8</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  #map {
+    height:500px;
+    width:100%;
+  }
+  </style>
+</head>
+
+<div class="row">
+  <div class="col-lg-12">
+    {{#if success_msg}}
+    <div class="alert alert-success">{{success_msg}}</div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="alert alert-danger">{{error_msg}}</div>
+    {{/if}}
+
+    {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+    
+    {{{body}}}
+  </div>
+
+  
+</div>
+
+
+<body>
+<!--NAVBAR SECTION START -->
+
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+
+    <div class="dropdown">
+        <button class="navbar-toggler navbar-toggler-right dropbtn" type="button" data-toggle="collapse"
+                data-target="#navbar-collapse-1" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbar-collapse-1" class="dropdown-content">
+            <ul class="nav navbar-nav navbar-right">
+                {{#if user}}
+                    <a class="sampleText">Hi! <strong>{{username}}</strong></a>
+                    <a href="/users/profile">Profile</a>
+                    <a href="/users/logout">Log Out</a>
+                {{else}}
+                    <a href="/users/signup">Sign Up</a>
+                    <a href="/users/login">Log In</a>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+
+    <a class="navbar-brand" href="/">team_8</a>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+        <form class="form-inline mt-2 mt-md-0" action="/" method="post">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="coursename"/>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav ml-auto">
+            {{#if user}}
+                <a class="nav-link prompt"> Welcome! {{username}} has {{point}} points!</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/users/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/logout">Log Out</a>
+                </li>
+            {{else}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/users/signup">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/login">Log In</a>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>
+
+<!-- NAV BAR ENDS -->
+
+        {{#if errors}}
+        {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+        {{/each}}
+        {{/if}}
+
+        <div class="map-wrapper">
+          <div id="map"></div>
+        </div>
+        <div class="content-wrapper">
+          <div class="cd-wrapper"> <!-- this is the container wrapper -->
+            <div class="cd-contact-wrapper"> <!-- Contact form -->
+              <p class="drop"><b>DROP US A LINE !</b></p>
+              <form class="form-horizontal" method="post" action="contact/send">
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Name</label>
+                  <div class="col-lg-8">
+                    <input class="form-control" type="text" placeholder="Name" name="name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Email</label>
+                  <div class="col-lg-8">
+                    <input class="form-control" type="email" placeholder="Your Email" name="email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Message</label>
+                  <div class="col-lg-12">
+                    <textarea class="form-control" type="input" placeholder="Enter Message" name="message" rows=8> </textarea>
+                  </div>
+                </div>
+                <p class="fieldset">
+                  <input class="full-width has-padding" type="submit" value="SEND MESSAGE">
+                </p>
+            </form>
+          </div>
+        </div> <!-- contact -->
+
+
+
+      <div class="cd-us-wrapper">
+        <p class="company-name"><b>team_8 Inc.</b></p>
+        <p class="company-mail">team_8_pu@gmail.com</p>
+        <p class="company-phone">267-441-2408</p>
+        <p class="company-description">225 Northwestern Ave., West Lafayette, IN. 47906</p>
+      </div>
+  </div>
+
+
+
+  <div class="footer">
+    <a class="about" href="/about"><b>About us</b></a>
+    <a class="contact" href="/contact"><b>Contact us</b></a>
+    <a class="company">&copy; 2017 team_8, Inc.</a>
+  </div>
+
+  <!--JavaScript-->
+  <script>
+  function initMap() {
+    var location = {lat: 40.425869, lng: -86.908066};
+    
+    var map = new google.maps.Map(document.getElementById('map'), {center: location,
+      scrollwheel: false,
+      zoom: 17
+    });
+
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map
+    });
+  }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbxldcXVnEQ630ubdPK_gcNFvAfeJ9U14&callback=initMap" ></script>
+</body>
+</html>

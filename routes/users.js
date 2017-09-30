@@ -239,7 +239,7 @@ router.post('/signup', function(req, res, next) {
 			var s3 = new AWS.S3();
 			
 			s3.upload({
-				Bucket: 'cs307symposium/avatars',
+				Bucket: 'cs307team_8/avatars',
 				Key: req.body.avatar,
 				Body: base64data,
 				ACL: 'public-read'
@@ -383,7 +383,7 @@ router.post('/profile', function(req, res, next){
 				var base64data = new Buffer(data, 'binary');
 				var s3 = new AWS.S3();
 				s3.upload({
-					Bucket: 'cs307symposium/avatars',
+					Bucket: 'cs307team_8/avatars',
 					Key: newAvatar,
 					Body: base64data,
 					ACL: 'public-read'
@@ -499,13 +499,13 @@ function(token, user, done) {
 	var smtpTransport = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
-			user: 'cs307symposium@gmail.com',
+			user: 'cs307team_8@gmail.com',
 			pass: '04262017'
 		}
 	});
 	var mailOptions = {
 		to: user.email,
-		from: 'cs307symposium@gmail.com',
+		from: 'cs307team_8@gmail.com',
 		subject: 'Node.js Password Reset',
 		text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
 		'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -555,13 +555,13 @@ router.post('/reset/:token', function(req, res) {
 			var smtpTransport = nodemailer.createTransport({
 				service: 'gmail',
 				auth: {
-					user: 'cs307symposium@gmail.com',
+					user: 'cs307team_8@gmail.com',
 					pass: '04262017'
 				}
 			});
 			var mailOptions = {
 				to: user.email,
-				from: 'cs307symposium@gmail.com',
+				from: 'cs307team_8@gmail.com',
 				subject: 'Your password has been changed',
 				text: 'Hello,\n\n' +
 				'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'

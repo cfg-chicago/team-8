@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/stylesheets_wjz/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/stylesheets/signup.css"/>
+
+
+  <title>team_8</title>
+</head>
+{{#if errors}}
+{{#each errors}}
+<div class="alert alert-danger">{{msg}}</div>
+{{/each}}
+{{/if}}
+
+<div class="row">
+  <div class="col-lg-12">
+    {{#if success_msg}}
+    <div class="alert alert-success">{{success_msg}}</div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="alert alert-danger">{{error_msg}}</div>
+    {{/if}}
+
+    {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+    
+    {{{body}}}
+  </div>  
+</div>
+
+<!--NAVBAR SECTION START -->
+
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+
+    <div class="dropdown">
+        <button class="navbar-toggler navbar-toggler-right dropbtn" type="button" data-toggle="collapse"
+                data-target="#navbar-collapse-1" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbar-collapse-1" class="dropdown-content">
+            <ul class="nav navbar-nav navbar-right">
+                {{#if user}}
+                    <a class="sampleText">Hi! <strong>{{username}}</strong></a>
+                    <a href="/users/profile">Profile</a>
+                    <a href="/users/logout">Log Out</a>
+                {{else}}
+                    <a href="/users/signup">Sign Up</a>
+                    <a href="/users/login">Log In</a>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+
+    <a class="navbar-brand" href="/">team_8</a>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+        <form class="form-inline mt-2 mt-md-0" action="/" method="post">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="coursename"/>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav ml-auto">
+            {{#if user}}
+                <a class="nav-link prompt"> Welcome! {{username}} has {{point}} points!</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/users/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/logout">Log Out</a>
+                </li>
+            {{else}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/users/signup">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/login">Log In</a>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>
+
+<!-- NAV BAR ENDS -->
+        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+          <div id="cd-signup"> <!-- sign up form -->
+            <form class="cd-form" method="post" action="/users/signup">
+              <p class="fieldset">
+                <label class="image-replace cd-username" for="signup-username">Username</label>
+                <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username (Required)" name="username">
+                <span class="cd-error-message">Error message here!</span>
+              </p>
+
+              <p class="fieldset">
+                <label class="image-replace cd-email" for="signup-email">E-mail</label>
+                <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail (Required)" name="email">
+                <span class="cd-error-message">Error message here!</span>
+              </p>
+              <div class="form-group">
+              <p class="fieldset">
+                <label class="image-replace cd-password" for="signup-password">Password</label>
+                <input class="full-width has-padding has-border" id="password" type="password"  placeholder="Password (Required)" name="password">
+                <span class="strength"></span>
+              </p>
+              </div>
+
+              <p class="fieldset">
+                <label class="image-replace cd-password" for="signup-password">Password</label>
+                <input class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="Confirm Password (Required)" name="passwordConfirm">
+                <span class="cd-error-message">Error message here!</span>
+              </p>
+
+              <p class="fieldset">
+                <label class="image-replace cd-username" for="signup-college">College</label>
+                <input class="full-width has-padding has-border" id="signup-college" type="text" placeholder="College (Optional)" name="college">
+                <span class="cd-error-message">Error message here!</span>
+              </p>
+
+              <p class="fieldset">
+                <label class="image-replace cd-username" for="signup-major">Major</label>
+                <input class="full-width has-padding has-border" id="signup-major" type="text" placeholder="Major (Optional)" name="major">
+                <span class="cd-error-message">Error message here!</span>
+              </p>
+
+              
+              <label for="file">Select your image as an avatar (Optional):</label>
+              <input type="file" name="avatar" id="avatar" />
+
+
+              <p class="fieldset">
+                <input class="full-width has-padding" type="submit" value="Create account">
+              </p>
+            </form>
+            
+
+
+
+          </div> <!-- cd-signup -->
+        </div>
+
+        <div class="footer">
+          <a class="company">&copy; 2017 team_8, Inc.</a>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/1.0/zxcvbn-async.min.js"></script>
+        <script src="../stylesheets_wjz/assets/js/pwdstr.js"></script> <!-- Modernizr -->
+
+
+      </body>
+      </html>

@@ -1,0 +1,37 @@
+body {
+	background: $alabaster;
+}
+
+.page-actions {
+	margin-bottom: 2em !important;
+}
+
+.icons {
+	width: 15px;
+}
+
+.legend {
+    padding: 25px !important;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.legend-professor {
+	display: inline-block;
+	height: 20px;
+	margin: 0 10px;
+	width: 10px;
+	background: #609;
+	position: relative;
+	top: 5px;
+}
+
+.legend-admin {
+	display: inline-block;
+	height: 20px;
+	margin: 0 10px;
+	width: 10px;
+	background: #0CF;
+	position: relative;
+	top: 5px;
+}

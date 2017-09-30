@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/stylesheets_wjz/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/stylesheets/about.css"/>
+  
+  <script src="javascripts/modernizr.js"></script> <!-- Modernizr -->
+  <title>team_8</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  #map {
+    height:500px;
+    width:100%;
+  }
+  </style>
+</head>
+
+<div class="row">
+  <div class="col-lg-12">
+    {{#if success_msg}}
+    <div class="alert alert-success">{{success_msg}}</div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="alert alert-danger">{{error_msg}}</div>
+    {{/if}}
+
+    {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+    
+    {{{body}}}
+  </div>
+
+  
+</div>
+
+
+<body>
+  <!--NAVBAR SECTION START -->
+
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+
+    <div class="dropdown">
+        <button class="navbar-toggler navbar-toggler-right dropbtn" type="button" data-toggle="collapse"
+                data-target="#navbar-collapse-1" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbar-collapse-1" class="dropdown-content">
+            <ul class="nav navbar-nav navbar-right">
+                {{#if user}}
+                    <a class="sampleText">Hi! <strong>{{username}}</strong></a>
+                    <a href="/users/profile">Profile</a>
+                    <a href="/users/logout">Log Out</a>
+                {{else}}
+                    <a href="/users/signup">Sign Up</a>
+                    <a href="/users/login">Log In</a>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+
+    <a class="navbar-brand" href="/">team_8</a>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+        <form class="form-inline mt-2 mt-md-0" action="/" method="post">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="coursename"/>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav ml-auto">
+            {{#if user}}
+                <a class="nav-link prompt"> Welcome! {{username}} has {{point}} points!</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/users/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/logout">Log Out</a>
+                </li>
+            {{else}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/users/signup">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/login">Log In</a>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>
+
+<!-- NAV BAR ENDS -->
+
+  
+  <div class="body-wrapper">
+    <div class="logo1">
+      <img src="images/logo-2.png" alt="" style="width:800px; height:210px"/>
+
+    </div>
+  
+    <hr>
+
+    <div class="info-wrapper">
+      <h2><b> About team_8 </b></h2>
+      <h5> We have begun our service in Purdue University. We are trying to reach our service to other University as well! Please Support us ! </h5>
+
+      <h4><b> Why team_8? </b></h4>
+      <h6> Students at Purdue often lack sufficient information about the courses that they are going to take in their preceding semester. </h6>
+      <h6> As a result, some students have difficulties adjusting to different teaching styles of each professor when first few weeks are critical to finish the course with the strong grade.</h6>
+      <h6>Different from other rating websites such as RateMyProfessors, users are able to obtain points by uploading their own study notes and these points could be later used to purchase other courses’ notes.</h6>
+
+      <h6>Therefore, we will provide a platform that aids students to better adjust and get prepared for their upcoming classes.</h6>
+
+      <h4><b> Our Mission </b></h4>
+      <h6> We aim to achieve the following goals: </h6>
+      <ul class="info-list">
+        <li> to share students' study experiences for each courses in Purdue. </li>
+        <li> to provide students with precise information about the courses. </li>
+        <li> to give students the study aids for different courses. </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+
+  <div class="footer">
+    <a class="about" href="/about"><b>About us</b></a>
+    <a class="contact" href="/contact"><b>Contact us</b></a>
+    <a class="company">&copy; 2017 team_8, Inc.</a>
+  </div>
+
+
+</body>
+</html>
