@@ -32,7 +32,7 @@ module.exports.createStudent = function(newStrudent, callback){
 	newStudent.save(callback);
 };
 
-module.exports.getStduentById = function(student_Id, callback){
+module.exports.getStudentById = function(student_id, callback){
 	var query = {_id: student_id};
 	Student.findOne(query,callback);
 };

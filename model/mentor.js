@@ -10,9 +10,6 @@ var MentorSchema = mongoose.Schema({
 		type: String
 	},
 	
-	sutdentId: {
-		type: Number
-	},
 	faceId: {
 		type: String 
 	},

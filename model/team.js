@@ -1,4 +1,4 @@
-var mongoose = requir('mongoose');
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var TeamSchema = mongoose.Schema({
@@ -18,7 +18,7 @@ var TeamSchema = mongoose.Schema({
     }
 });
 
-var Team = module.exports = mongoose.model('User', UserSchema);
+var Team = module.exports = mongoose.model('Team', TeamSchema);
 
 module.exports.createTeam = function(newTeam, callback){
 	newTeam.save(callback);
@@ -32,5 +32,5 @@ module.exports.getTeamByMentor = function(mentorId,callback){
 
 module.exports.getTeamByStudent = function(studentId,callback){
 	var query = {studentId: studentId};
-	Team.findOne{query,callback}; 
+	Team.findOne(query,callback);
 };
