@@ -27,7 +27,7 @@ module.exports.createMentor = function(newMentor, callback){
 	newMentor.save(callback);
 };
 
-module.exports.getMentorByUserId = funciton(userId callback){
+module.exports.getMentorByUserId = function(userId, callback){
 	var query = {userId: userId};
 	Mentor.findOne(query,callback);
 };

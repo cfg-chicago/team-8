@@ -11,7 +11,7 @@ var crypto = require('crypto');
 var async = require('async');
 var nodemailer = require('nodemailer');
 var CronJob = require('cron').CronJob;
-
+var Mentor = require('../model/mentor');
 // Define directory for storing file from multipart request.
 // In this case is directory 'uploads' inside same directory with our server
 
@@ -82,6 +82,7 @@ router.get('/logout', function(req, res){
 // Flag to check if the user has already logged in today
 
 var flagTwoPt = true;
+
 router.post('/login', function(req, res, next) {
 	// Check if the username and password match
 	passport.authenticate('local', function(err, user, info) {
@@ -133,8 +134,10 @@ router.post('/login', function(req, res, next) {
 			resolve();
 		});
 			loginPt.then(function() {
-				
-				res.redirect('/');
+				if(req.user.type == "Mentor")
+				res.redirect('/Mentor');
+				if(req.user.type == 'Student')
+				res.redirect('/Student');
 			});
 		});
 })(req, res, next);
@@ -226,7 +229,8 @@ router.post('/signup', function(req, res, next) {
 					email: signupEmail,
 					password: signupPassword,			
 					avatar: defaultAvatar,
-					faceId: faceId
+					faceId: faceId,
+					type: signupType
 				});
 
 				User.find({$or: [{username: signupUsername}, {email: signupEmail}]}, function(err, docs) {
