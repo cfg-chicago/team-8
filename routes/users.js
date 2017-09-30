@@ -152,7 +152,7 @@ router.post('/signup', function(req, res, next) {
 	var signupEmail = req.body.email;
 	var signupPassword = req.body.password;
 	var signupConfirmPassword = req.body.passwordConfirm;
-	var signupType= req.body.Type;
+	var signupType= req.body.type;
 	var signupAvatar = req.body.avatar;
 	
 	if (req.body.avatar.length === 0) {
@@ -175,6 +175,7 @@ router.post('/signup', function(req, res, next) {
 				email: signupEmail,
 				password: signupPassword,			
 				avatar: defaultAvatar,
+				type:tyep,
 				faceId: faceId
 
 			});
