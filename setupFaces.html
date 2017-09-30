@@ -1,31 +1,19 @@
 
 <head>
-    <title>Detect Faces Sample</title>
+    <title>Setup Faces Test</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 
 <script type="text/javascript">
     function setupFaces(schoolName, azureApiKey) {
-        // **********************************************
-        // *** Update or verify the following values. ***
-        // **********************************************
 
-        // Replace the subscriptionKey string value with your valid subscription key.
         var subscriptionKey = azureApiKey;
 
-        // Replace or verify the region.
-        //
-        // You must use the same region in your REST API call as you used to obtain your subscription keys.
-        // For example, if you obtained your subscription keys from the westus region, replace
-        // "westcentralus" in the URI below with "westus".
-        //
         // NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
         // a free trial subscription key, you should not need to change this region.
         var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/" + schoolName
         // Request parameters.
-        var params = {
-
-        };
+        var params = {};
 
         // Perform the REST API call.
         $.ajax({
@@ -44,9 +32,7 @@
         })
 
         .done(function(data) {
-            // Show formatted JSON on webpage.
-            
-            console.log($("#responseTextArea").val(JSON.stringify(data, null, 2)));
+            //console.log($("#responseTextArea").val(JSON.stringify(data, null, 2)));
         })
 
         .fail(function(jqXHR, textStatus, errorThrown) {
@@ -57,23 +43,7 @@
             alert(errorString);
         });
     };
-        
-  /* what postman exported
-  //make new person group. One per school.
-  PUT /face/v1.0/persongroups/{personGroupId} HTTP/1.1
-  Host: westcentralus.api.cognitive.microsoft.com
-  Content-Type: application/json
-  Ocp-Apim-Subscription-Key: 1915dbebbe264b949cbff76009550baa //change me to your azure api key
-  Cache-Control: no-cache
-//  Postman-Token: d8eca926-7e44-ebe0-905d-bfe1d9f96ba7
-
-  {
-    "name":schoolname, 
-    "userData":"optional"
-  }
-
-  */
   
-
-setupFaces("school3", "REPLACEME")
+//example usage and test:
+//setupFaces("school3", "REPLACEME")
 </script>
