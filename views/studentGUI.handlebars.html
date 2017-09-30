@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+        
+        <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+        <link href="../stylesheets/student.css" rel="stylesheet">
+	</head>
+	<body>
+        
+        <!-- Insert student -->
+        <div>
+            <h1 id = "name">Pablo</h1>
+            <h2 id = "ticket"> <img src = "static/ticket.png"> <div id = "ticketImg" >X 18</div> </h2>
+        </div>    
+        <!-- Insert team name -->
+        <div id = "ohh">
+            <h1 class = "team">Team # 3</h1>
+            <h2 class = "team">Team Score 40</h2>
+            <form id = "myForm">
+                <input id = "free" type="text" name="fname" placeholder="Your Reflection"><br>
+                <button onclick = "document.getElementById('myForm').reset()" value="Send" >Send</button>
+            </form>  
+        </div>
+        
+        <div class="slideshow">
+            <img class="mySlides" src="static/owl.jpg">
+            <img class="mySlides" src="static/comic.jpg">
+            <img class="mySlides" src="static/fire.jpg">
+        </div>
+        </br>
+        
+        <p>
+            This application is awesome! I have been using this app for the last three and weeks and I love it. 
+            It is amazing how many cool things it can do. I can't wait to keep using it every week with the help of my mentors. 
+            My parents can also see all the amazing things that I have been doing and they love seeing all of it! 
+        </p>
+         
+	</body>
+	<script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+           x[i].style.display = "none";  
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}    
+        x[myIndex-1].style.display = "block";  
+        setTimeout(carousel, 3000); // Change image every 2 seconds
+    }
+	</script>
+</html>

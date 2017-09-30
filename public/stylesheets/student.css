@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo');
+* {
+    font-family: 'Heebo', sans-serif;
+}
+
+.slideshow img{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    display:none;
+}
+.slideshow{
+    width:98%;
+}
+.w2{
+    text-align:center;
+}
+img{
+    border-radius:80px;
+    max-width:400px;
+    max-height:300px;
+}
+#name{
+    text-align:center;
+    font-size:4em;
+}
+.team{
+    text-align:right;
+}
+#ticket{
+    text-align:center;
+}
+#ticketImg{
+    line-height:12px;
+}
+#ohh{
+    position:fixed;
+    right:100px;
+    top:0px;
+}
+form button{
+    margin-left:140px;
+}
+#free{
+    height:400px;
+    width:300px;
+    font-size:2em;
+}
+p{
+    width:40%;
+    margin-left:30%;
+    margin-top:30px;
+    font-size:20pt;
+}

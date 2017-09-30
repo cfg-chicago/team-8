@@ -133,10 +133,10 @@
 
 
           <script>
-              function takeAttendance(who) {
+              function takeAttendance(who,name) {
                   if(who.checked){
                       who.setAttribute("disabled", "disabled");
-                      document.getElementById(name).innerHTML = "Attendance taken.";
+                      document.getElementById(name).innerHTML = "Attendance taken for " + name;
                       //log user attendance
                   }
               }
