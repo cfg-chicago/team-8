@@ -3,7 +3,7 @@ var async = require('async');
 var router = express.Router();
 var Mentor = require('../model/mentor');
 var Student = require('../model/student');
-var Team = require('../model/team');
+//var Team = require('../model/team');
 var User = require('../model/user');
 var bodyParser = require('body-parser');
 var app = express();
@@ -13,7 +13,7 @@ var io = require('socket.io').listen(server);
 var Handlebars = require('handlebars');
 var CronJob = require('cron').CronJob;
 app.use(bodyParser.json());
-
+/*
 function loggedIn(req, res, next) {
   //console.log(req.user.avatar);
     if (req.user) {
@@ -23,13 +23,13 @@ function loggedIn(req, res, next) {
      // res.redirect('/');
     }
 }
-
+*/
 router.get('/', function(req,res,callback) {
     console.log('mentor page')
     var students = new Array();
     var team = new Object();
     var temp1 = new Array();
-    async.series([
+ /*   async.series([
 
     	function(callback){
 		    Stduent.getStudentByMentorId(req.user.id, function(err,student){
@@ -55,6 +55,11 @@ router.get('/', function(req,res,callback) {
     		team:team,
     		username:req.user.username
     	})
+    })*/
+    res.render('mentor',{
+        students:stduents,
+        team:team,
+        username:req.user.username
     })
 });
 
