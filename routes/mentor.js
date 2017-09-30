@@ -50,12 +50,11 @@ router.get('/', function(req,res,callback) {
 		 }
 
     ], function(err){
-    	res.render('mentor',{
-    		students:stduents,
-    		team:team,
-    		username:req.user.username
+    	res.render('discussion',{
+    		
     	})
     })
 });
 
-module.exports.router;
+
+module.exports = router;
